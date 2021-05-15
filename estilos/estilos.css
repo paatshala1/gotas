@@ -1,0 +1,104 @@
+:root {
+    --dropScaleIni: 1;
+    --dropScaleEnd: 1.2;
+    --reps: 5;
+    --colorBase: #5080da; /* #b00 */
+    --duration: 2s;
+}
+
+body {
+    background-color: blueviolet;
+}
+
+.cont {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    height: 500px;
+    border-top: 10px solid var(--colorBase);
+    background-color: #fff;
+    justify-content: space-around;
+    filter: blur(10px) contrast(5);
+}
+
+.cont__circulo {
+    background-color: var(--colorBase);
+    border-radius: 50%;
+    margin: 30px;
+}
+
+.cont_punta {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: -53px;
+    left: 125px;
+    transform: rotate(45deg);
+    background-color: var(--colorBase);
+    animation-name: gotera;
+    animation-duration: calc(var(--duration));
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: var(--reps);
+}
+ 
+#circulo1 {
+    width: 150px;
+    height: 150px;
+    margin-left: 90px;
+    animation-name: gotaCae;
+    animation-duration: var(--duration);
+    animation-delay: calc(var(--duration) * 0.005);
+    animation-timing-function: cubic-bezier(1,0,.6,.99);
+    animation-iteration-count: var(--reps);
+    animation-fill-mode:forwards;
+}
+
+#circulo2 {
+    width: 75px;
+    height: 75px;
+    margin-left: 100px;
+    animation-name: gotaRecibe;
+    animation-duration: var(--duration);
+    animation-timing-function: ease-out;
+    animation-iteration-count: var(--reps);
+    animation-fill-mode: forwards;
+}
+
+@keyframes gotaCae {
+    0% {
+        transform: translate(-1px, -205px) scale(0.6);
+    }
+    
+    100% {
+        transform: translate(-1px, 210px) scale(.35);
+    }
+}
+
+@keyframes gotaRecibe {
+    0% {
+        transform: scale(var(--dropScaleIni));
+        
+    }   
+    
+    85% {
+        transform: scale(var(--dropScaleIni));
+    }
+
+    100% {
+        transform: scale(var(--dropScaleEnd));
+    }
+}
+
+@keyframes gotera {
+    0% {
+        transform: translateY(0px) rotate(45deg);
+    }
+
+    78% {   
+        transform: translateY(15px) rotate(45deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(45deg);
+    }
+}
